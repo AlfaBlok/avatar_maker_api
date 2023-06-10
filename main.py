@@ -1,4 +1,4 @@
-from flask import Flask, send_file
+from flask import Flask, send_file, Response
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
@@ -113,13 +113,11 @@ def generate_avatar(file_name):
     return final_img_io
 
 
-
 @app.route('/avatar')
 def avatar():
-    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as temp:
-        generate_avatar(temp.name)
-        return send_file(temp.name, mimetype='image/png')
-    
+    img_io = generate_avatar()
+    return Response(img_io.getvalue(), mimetype='image/png')
+
 
 @app.route('/hello')
 def hello():
