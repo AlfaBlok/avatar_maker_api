@@ -23,7 +23,7 @@ def generate_avatar(file_name):
     a2 = random.uniform(-0.5, 0.5)
     b1 = random.uniform(-0.5, 0.5)
     b2 = random.uniform(-0.5, 0.5)
-    b1 = random.uniform(-0.5, 0.5)
+    b1 = random.uniform(-0.55, 0.5)
     c = random.uniform(-0.5, 0.5)
     c1 = random.uniform(-0.5, 0.5)
     c2 = random.uniform(-0.5, 0.5)
@@ -66,5 +66,6 @@ def avatar():
         return send_file(temp.name, mimetype='image/png')
     
     
+
 if __name__ == '__main__':
     app.run() #port=8000
