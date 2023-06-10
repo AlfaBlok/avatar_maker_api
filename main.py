@@ -19,11 +19,11 @@ def generate_avatar():
     X, Y = np.meshgrid(x, y)
 
     # Randomize parameters
-    a1 = random.uniform(-0.5, 0.5)
+    a1 = random.uniform(0.1, 2)
     a2 = random.uniform(-0.5, 0.5)
     b1 = random.uniform(-0.5, 0.5)
     b2 = random.uniform(-0.5, 0.5)
-    b1 = random.uniform(-0.55, 0.5)
+    b1 = random.uniform(0.1, 2)
     c = random.uniform(-0.5, 0.5)
     c1 = random.uniform(-0.5, 0.5)
     c2 = random.uniform(-0.5, 0.5)
@@ -34,8 +34,14 @@ def generate_avatar():
 
     # Randomize colormap
     hex_colors = ["#0E0B13", "#616161", "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#C3B48E", "#FF9F20","#3929FA"]
+    constant_color = "#EA3EFF"
+    #we add the constant color to the colormap
     colors = random.sample(hex_colors, k=2)
+    colors.append(constant_color)
+
     cmap = mcolors.LinearSegmentedColormap.from_list("", colors)
+
+    
 
     # Plot
     fig, ax = plt.subplots(figsize=(5, 5), dpi=80)
