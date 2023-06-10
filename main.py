@@ -14,8 +14,8 @@ def gaussian(x, y, a1, a2, b1, b2, c1, c2, c3, c):
 
 def generate_avatar():
     # Generate coordinates
-    x = np.linspace(-2, 2, 10)
-    y = np.linspace(-2, 2, 10)
+    x = np.linspace(-2, 2, 24)
+    y = np.linspace(-2, 2, 24)
     X, Y = np.meshgrid(x, y)
 
     # Randomize parameters
