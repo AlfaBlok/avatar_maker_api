@@ -65,7 +65,10 @@ def avatar():
         generate_avatar(temp.name)
         return send_file(temp.name, mimetype='image/png')
     
-    
+
+@app.route('/hello')
+    return("Hello World!")    
+
 
 if __name__ == '__main__':
     app.run() #port=8000
