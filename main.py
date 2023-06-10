@@ -36,7 +36,7 @@ def generate_avatar():
     hex_colors = ["#0E0B13", "#616161", "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#C3B48E", "#FF9F20","#3929FA"]
     constant_color = "#EA3EFF"
     #we add the constant color to the colormap
-    colors = random.sample(hex_colors, k=2)
+    colors = random.sample(hex_colors, k=3)
     colors.append(constant_color)
 
     cmap = mcolors.LinearSegmentedColormap.from_list("", colors)
