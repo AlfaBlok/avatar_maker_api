@@ -2,4 +2,3 @@ flask
 numpy
 matplotlib
 pillow
-tempfile
