@@ -34,7 +34,7 @@ def generate_avatar():
 
     # Randomize colormap
     hex_colors = ["#0E0B13", "#616161", "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#C3B48E", "#FF9F20","#3929FA"]
-    colors = random.sample(hex_colors, k=4)
+    colors = random.sample(hex_colors, k=2)
     cmap = mcolors.LinearSegmentedColormap.from_list("", colors)
 
     # Plot
