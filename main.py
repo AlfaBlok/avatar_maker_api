@@ -33,7 +33,8 @@ def generate_avatar():
     Z = gaussian(X, Y, a1, a2, b1, b2, c1, c2, c3, c)
 
     # Randomize colormap
-    hex_colors = ["#0E0B13", "#616161", "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#C3B48E", "#FF9F20","#3929FA"]
+    hex_colors = [  "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#FF9F20","#3929FA"]  #"#0E0B13", "#616161", "#C3B48E"
+#    hex_colors = ["#0E0B13", "#616161", "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#C3B48E", "#FF9F20","#3929FA"]
     constant_color = "#EA3EFF"
     #we add the constant color to the colormap
     colors = random.sample(hex_colors, k=3)
@@ -85,7 +86,7 @@ def generate_avatar_old():
     Z = gaussian(X, Y, a1, a2, b1, b2, c1, c2, c3, c)
 
     # Randomize colormap
-    hex_colors = ["#0E0B13", "#616161", "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#C3B48E", "#FF9F20","#3929FA"]
+    hex_colors = [  "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#FF9F20","#3929FA"]  #"#0E0B13", "#616161", "#C3B48E"
     constant_color = "#EA3EFF"
     #we add the constant color to the colormap
     colors = random.sample(hex_colors, k=3)
