@@ -41,6 +41,58 @@ def generate_avatar():
 
     cmap = mcolors.LinearSegmentedColormap.from_list("", colors)
 
+    # Plot
+    fig, ax = plt.subplots(figsize=(5, 5), dpi=80)
+    img = ax.imshow(Z, cmap=cmap, interpolation='nearest')
+
+    # Remove frame
+    ax.axis('off')
+    plt.tight_layout(pad=0)
+
+    # Save figure to BytesIO object
+    img_io = io.StringIO()
+    plt.savefig(img_io, format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
+    plt.close()
+
+    # Get the SVG content
+    svg = img_io.getvalue()
+
+    # Add SVG mask for circular crop
+    svg_masked = svg.replace('<svg ', '<svg clip-path="url(#myCircle)" ', 1)
+    svg_masked = svg_masked.replace('</svg>', '<defs><clipPath id="myCircle"><circle cx="50%" cy="50%" r="40%" /></clipPath></defs></svg>', 1)
+
+    return svg_masked
+
+
+def generate_avatar_old():
+    # Generate coordinates
+    x = np.linspace(-2, 2, 24)
+    y = np.linspace(-2, 2, 24)
+    X, Y = np.meshgrid(x, y)
+
+    # Randomize parameters
+    a1 = random.uniform(0.1, 2)
+    a2 = random.uniform(-0.5, 0.5)
+    b1 = random.uniform(-0.5, 0.5)
+    b2 = random.uniform(-0.5, 0.5)
+    b1 = random.uniform(0.1, 2)
+    c = random.uniform(-0.5, 0.5)
+    c1 = random.uniform(-0.5, 0.5)
+    c2 = random.uniform(-0.5, 0.5)
+    c3 = random.uniform(-0.5, 0.5)
+
+    # Calculate Z values
+    Z = gaussian(X, Y, a1, a2, b1, b2, c1, c2, c3, c)
+
+    # Randomize colormap
+    hex_colors = ["#0E0B13", "#616161", "#A160F1", "#72E249", "#1BDCDF", "#F460FF", "#F06087", "#FCD842", "#C3B48E", "#FF9F20","#3929FA"]
+    constant_color = "#EA3EFF"
+    #we add the constant color to the colormap
+    colors = random.sample(hex_colors, k=3)
+    colors.append(constant_color)
+
+    cmap = mcolors.LinearSegmentedColormap.from_list("", colors)
+
     
 
     # Plot
@@ -77,8 +129,8 @@ def generate_avatar():
 
 @app.route('/avatar')
 def avatar():
-    img_io = generate_avatar()
-    return Response(img_io.getvalue(), mimetype='image/png')
+    svg = generate_avatar()
+    return Response(svg, mimetype='image/svg+xml')
 
 
 @app.route('/hello')
